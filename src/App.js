@@ -1,11 +1,13 @@
 import './App.css';
+import Counter from './components/Counter';
 
 function App() {
   return (
     <div className="App">
       <h1 className="header-class">
-       Basic react application
+     COUNTER APP
       </h1>
+      <Counter/>
     </div>
   );
 }
