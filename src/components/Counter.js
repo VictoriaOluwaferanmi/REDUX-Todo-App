@@ -1,29 +1,32 @@
-import React, {useState} from 'react'
-
+import React from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { decrement, increment,reset } from '../redux/slice'
 
 const Counter = () => {
-const[data, setData]=useState(0)
-
-function deCount(){
-    setData(data - 1)
-}
-
-function inCount(){
-
-setData(data + 1);
-
-}
-function reset(){
-    setData(0)
-}
-
+   const count = useSelector((state) => state.counter.value)
+  const dispatch = useDispatch()
   return (
-    <React.Fragment>
-    <h2 id='counter-value'>{data} </h2>
-    <button id="increase-button"  onClick= {inCount}>   Increase    </button>
-    <button  id="decrease-button" onClick= {deCount}>   Decrease</button>
-    <button  id="reset-button"    onClick=    {reset}>        Reset      </button>
-    </React.Fragment>
+    <div>
+
+      <h1>{count}</h1>
+     <button id='increase-button'
+          
+          onClick={() => dispatch(increment())}
+        >
+          Increment
+        </button>
+      
+        <button
+         id='decrease-button' onClick={() => dispatch(decrement())}
+        >
+          Decrement
+        </button>
+         <button  id='reset-button'
+          onClick={() => dispatch(reset())}
+        >
+         Reset
+        </button>
+    </div>
   )
 }
 
